@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head />
+
+<h:body>
+	<div id="detalhe_cadastro"></div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="instituicao" value="Instituição:" />
+		<h:outputText styleClass="ui-g-3" id="instituicao" value="#{cadastroBean.instituicao}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="nome" value="Nome:" />
+		<h:outputText styleClass="ui-g-3" id="nome" value="#{cadastroBean.nome}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="email" value="E-mail:" />
+		<h:outputText styleClass="ui-g-3" id="email" value="#{cadastroBean.email}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="area" value="Área:" />
+		<h:outputText styleClass="ui-g-3" id="area" value="#{cadastroBean.area}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="telefone" value="Telefone:" />
+		<h:outputText styleClass="ui-g-3" id="telefone" value="#{cadastroBean.telefone}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel styleClass="ui-g-1" for="celular" value="Celular:" />
+		<h:outputText styleClass="ui-g-3" id="celular" value="#{cadastroBean.celular}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel for="servico" styleClass="ui-g-1" value="Serviço:" />
+		<h:outputText styleClass="ui-g-3" id="servico" value="#{cadastroBean.servico}" />
+	</div>
+	<div class="ui-g">
+		<p:outputLabel for="descricao" styleClass="ui-g-1" value="Descrição:" />
+		<h:outputText styleClass="ui-g-3" id="descricao" value="#{cadastroBean.descricao}" />
+	</div>
+</h:body>
+
+</html>

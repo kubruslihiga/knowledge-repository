@@ -1,0 +1,8 @@
+/target/
+/target/*
+/.settings/*
+rebel.xml
+.classpath
+.project
+.settings
+.tern-project

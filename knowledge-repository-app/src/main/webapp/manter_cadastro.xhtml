@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head />
+
+<h:body>
+	<f:metadata>
+    	<f:viewParam name="init" value="#{cadastroBean.initParam}" />
+    	<f:event type="preRenderView" listener="#{cadastroBean.preRenderView}" />
+	</f:metadata>
+	<h:form id="c" prependId="false">
+		<p:messages id="messages" />
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="instituicao" value="Instituição:" />
+			<p:inputText styleClass="ui-g-3" id="instituicao" value="#{cadastroBean.instituicao}" required="true"	 />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="nome" value="Nome:" />
+			<p:inputText styleClass="ui-g-3" id="nome" value="#{cadastroBean.nome}" />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="email" value="E-mail:" />
+			<p:inputText styleClass="ui-g-3" id="email" value="#{cadastroBean.email}" />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="area" value="Área:" />
+			<p:inputText styleClass="ui-g-3" id="area" value="#{cadastroBean.area}" />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="telefone" value="Telefone:" />
+			<p:inputMask styleClass="ui-g-3" id="telefone" mask="99-99999999" value="#{cadastroBean.telefone}" />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel styleClass="ui-g-1" for="celular" value="Celular:" />
+			<p:inputMask styleClass="ui-g-3" id="celular" mask="99-999999999" value="#{cadastroBean.celular}" />
+		</div>
+		<div class="ui-g">
+			<p:outputLabel for="servico" styleClass="ui-g-1" value="Serviço:" />
+			<p:selectOneMenu id="servico" styleClass="ui-g-3" value="#{cadastroBean.servico}">
+	    		<f:selectItem itemLabel="..." itemValue="" />
+	    		<f:selectItems value="#{cadastroBean.servicosItems}" />
+			</p:selectOneMenu>
+		</div>
+		<div class="ui-g">
+			<p:outputLabel for="descricao" styleClass="ui-g-1" value="Descrição:" />
+			<p:inputTextarea id="descricao" value="#{cadastroBean.descricao}" rows="10" styleClass="ui-g-3" />
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-1"></div>
+			<p:commandButton process="@none" update="@form" actionListener="#{cadastroBean.limpar}" styleClass="ui-g-1" value="Limpar" />
+			<p:commandButton id="confirmar-btn" action="#{cadastroBean.confirmar}" styleClass="ui-g-1" value="Confirmar" update="@form" />
+		</div>
+	</h:form>
+</h:body>
+
+</html>
