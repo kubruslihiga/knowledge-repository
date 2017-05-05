@@ -1,4 +1,4 @@
-package br.base.conhecimento;
+package br.base.conhecimento.boot;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.MultipartConfigElement;

@@ -1,4 +1,4 @@
-package br.base.conhecimento.tos;
+package br.base.conhecimento;
 
 import java.io.Serializable;
 import java.util.List;

@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import base.conhecimento.dao.PersistenceDAO;
-import br.base.conhecimento.Application;
+import br.base.conhecimento.boot.Application;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
