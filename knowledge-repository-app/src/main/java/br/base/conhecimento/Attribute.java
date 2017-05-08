@@ -8,6 +8,10 @@ public class Attribute {
 
     private String internalDatatypeURI;
 
+    private String attributeURI;
+
+    private String attributeValue;
+
     public String getName() {
         return name;
     }
@@ -32,4 +36,19 @@ public class Attribute {
         this.internalDatatypeURI = internalDatatypeURI;
     }
 
+    public String getAttributeURI() {
+        return attributeURI;
+    }
+
+    public void setAttributeURI(String attributeURI) {
+        this.attributeURI = attributeURI;
+    }
+
+    public String getAttributeValue() {
+        return attributeValue;
+    }
+
+    public void setAttributeValue(String attributeValue) {
+        this.attributeValue = attributeValue;
+    }
 }

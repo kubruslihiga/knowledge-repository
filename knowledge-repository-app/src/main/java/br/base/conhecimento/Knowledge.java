@@ -15,6 +15,8 @@ public class Knowledge implements Serializable {
 
 	private List<Attribute> attributeList;
 
+	private String owlPath;
+
 	public String getName() {
 		return name;
 	}
@@ -46,4 +48,13 @@ public class Knowledge implements Serializable {
 	public void setAttributeList(List<Attribute> attributeList) {
 		this.attributeList = attributeList;
 	}
+
+	public String getOwlPath() {
+		return owlPath;
+	}
+
+	public void setOwlPath(String owlPath) {
+		this.owlPath = owlPath;
+	}
+
 }
