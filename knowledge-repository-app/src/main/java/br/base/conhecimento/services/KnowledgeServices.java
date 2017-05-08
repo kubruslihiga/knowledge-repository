@@ -7,9 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.ontology.Individual;
@@ -26,10 +24,8 @@ import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.util.iterator.ExtendedIterator;
 import org.springframework.stereotype.Service;
 
 import com.google.common.base.CaseFormat;
@@ -42,7 +38,7 @@ import br.base.conhecimento.KnowledgeInstance;
 @Service
 public class KnowledgeServices {
 
-	private static final String DIRECTORY_SAVE_OWL = "/home/mauricio/Documents/owl/";
+	private static final String DIRECTORY_SAVE_OWL = "/home/mauricio/Documentos/owl/";
 	private static final String HTTP_ONTOLOGY_EXAMPLE = "http://ontology.example/ont#";
 	private static final String HTTP_ONTOLOGY_EXAMPLE2 = "<" + HTTP_ONTOLOGY_EXAMPLE + ">";
 	final String BASE = "http://base.example/";
@@ -99,8 +95,6 @@ public class KnowledgeServices {
 		OntModel ontologyModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM, model.read(new FileInputStream(DIRECTORY_SAVE_OWL + treatedString + ".owl"), uri));
 		OntClass ontClass = ontologyModel.getOntClass(uri);
 		Individual individual = ontClass.createIndividual(uri + "/" + treatString(instance.getName()));
-		Map<String, String> map = new HashMap<>();
-		ontologyModel.setNsPrefixes(map);
 		List<Attribute> attributeList = instance.getAttributeList();
 		for (Attribute attribute : attributeList) {
 			OntProperty ontProperty = ontologyModel.getOntProperty(attribute.getAttributeURI());
@@ -109,20 +103,9 @@ public class KnowledgeServices {
 			} else if (ontProperty.isObjectProperty()) {
 				individual.addProperty(ontProperty, attribute.getAttributeValue());
 			}
-			
-		}
-		ExtendedIterator<OntProperty> listAllOntProperties = ontologyModel.listAllOntProperties();
-		while(listAllOntProperties.hasNext()) {
-			OntProperty ontProperty = listAllOntProperties.next();
-			if (ontProperty.isLiteral() || ontProperty.isDatatypeProperty()) {
-				individual.addLiteral(ontologyModel.createProperty(ontProperty.getURI()), "Preto");
-			}
 		}
 		DatasetAccessor accessor = DatasetAccessorFactory.createHTTP(FUSEKI_SERVICE_DATASETS_URI);
 		if (accessor != null) {
-			// because I already had a number of Triples there already - I am
-			// only adding this model
-			individual.getModel().write(System.out);
 			accessor.add(individual.getModel());
 		}
 	}
@@ -185,6 +168,11 @@ public class KnowledgeServices {
         cabelo.setAttributeList(Arrays.asList(attr1, attr2, attr3));
         services.insertKnowledge(cabelo);
 
-        // services.insertInstance("Forma cabelo");
+        KnowledgeInstance instance = new KnowledgeInstance();
+        instance.setName("Liso");
+        instance.setKnowledgeName("Forma cabelo");
+        attribute.setAttributeValue("Liso");
+        instance.setAttributeList(Arrays.asList(attribute));
+        services.insertInstance(instance);
     }
 }
